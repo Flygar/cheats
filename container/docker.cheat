@@ -1,65 +1,48 @@
 % docker
 
-# Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
-docker tag <IMAGE_ID> <TARGET_IMAGE[:TAG]>
-
-# 将已标记的镜像上传到镜像库
-docker push <username>/<repository>:<tag>
-
-
 # Build an image from the Dockerfile in the current directory and tag the image
 docker build -f <Dockerfile> -t <image>:<version>  .
 
-# Pull an image from a registry
-docker pull <image>:<version>
-
-# Delete an image from the local image store
-docker rmi <image_id>
-# 从机器中删除所有镜像
-docker rmi $(docker images -qa)
-
 # container非人为关闭自启
 docker update --restart=always <CONTAINER ID>
+
 # 获取container日志路径
 docker inspect --format='{{.LogPath}}' [container-id or container-name]
+
 # 查看container的pid：
 docker inspect --format '{{ .State.Pid }}'  [container-id or container-name]
 
 # 下载镜像tar包到本地并压缩为tgz格式
 docker save myimage:latest | gzip > myimage_latest.tar.gz
+
 # load装载镜像
 docker load < myimage_latest.tar.gz
-
-
-# Stop a running container through SIGTERM
-docker stop <container_id>
-
-# Restart a running container through SIGTERM
-docker restart <container_id>
 
 # Delete all running and stopped containers
 docker rm -f <container_id>
 
 # Create a new bash process inside the container and connect it to the terminal
 docker exec -it <container_id> bash
-# 以root用户进入container，方便执行某些命令
-docker exec -u 0 -it <container_id> bash
+
+# Exec with user root
+docker exec -u root -it <container_id> bash
 
 # Print the last lines of a container's logs
 docker logs --tail 100 <container_id> | less
 
 # Print the last lines of a container's logs and following its logs
-docker logs -f --tail 100 <container_id> -f
+docker logs -f --tail 100 <container_id>
 
 # List the networks
 docker network ls
+
 # Create new network with driver bridge
 docker network create -d bridge <network_name>
+
 # remove all unused networks
 docker network prune 
 
 $ image_id: docker images --- --headers 1 --column 3
-$ IMAGE_ID: docker images --- --headers 1 --column 3
 $ container_id: docker ps --- --headers 1 --column 1
 
 
