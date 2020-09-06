@@ -1,0 +1,16 @@
+% git
+
+# Set global git user name
+git config --global user.name <name>
+
+# Set global git user email
+git config --global user.email <email>
+
+# Initializes a git repository
+git init
+
+# Clone a git repository, point to <branch_name> branch
+git clone -b <branch_name> <repository> <clone_directory>
+
+# View all available remote for a git repository
+git remote --verbose
