@@ -1,3 +1,2 @@
 # cheats
-cheatsheet for the command-line and application launchers.
-2222
+Cheatsheets for [navi](https://github.com/denisidoro/navi).

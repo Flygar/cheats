@@ -1,25 +1,28 @@
 % docker
 
+# Create a tag TARGET_IMAGE[:TAG] that refers to SOURCE_IMAGE[:TAG]
+docker tag <SOURCE_IMAGE> <TARGET_IMAGE>
+
+# Push an image SOURCE_IMAGE[:TAG] or a repository to a registry
+docker push <SOURCE_IMAGE>
+
 # Build an image from the Dockerfile in the current directory and tag the image
-docker build -f <Dockerfile> -t <image>:<version>  .
+docker build -f <Dockerfile> -t <myimage>:<tag> .
 
-# container非人为关闭自启
-docker update --restart=always <CONTAINER ID>
+# Update configuration: restart policy
+docker update --restart=always <container_id>
 
-# 获取container日志路径
-docker inspect --format='{{.LogPath}}' [container-id or container-name]
+# Save an image to a tar archive and do gzip
+docker save <image_id> | gzip > myimage_latest.tar.gz
 
-# 查看container的pid：
-docker inspect --format '{{ .State.Pid }}'  [container-id or container-name]
-
-# 下载镜像tar包到本地并压缩为tgz格式
-docker save myimage:latest | gzip > myimage_latest.tar.gz
-
-# load装载镜像
+# Load an image from a tar archive or STDIN
 docker load < myimage_latest.tar.gz
 
-# Delete all running and stopped containers
+# Force the removal of a running container (uses SIGKILL)
 docker rm -f <container_id>
+
+# Remove image
+docker rmi <image_id>
 
 # Create a new bash process inside the container and connect it to the terminal
 docker exec -it <container_id> bash
@@ -32,6 +35,15 @@ docker logs --tail 100 <container_id> | less
 
 # Print the last lines of a container's logs and following its logs
 docker logs -f --tail 100 <container_id>
+
+# show low-level information of container's logpath
+docker inspect --format='{{.LogPath}}' <container_id>
+
+# show low-level information of container's pid
+docker inspect --format '{{ .State.Pid }}'  <container_id>
+
+# show low-level information of container's IPAddress
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' <container_id>
 
 # List the networks
 docker network ls

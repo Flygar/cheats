@@ -14,3 +14,10 @@ git clone -b <branch_name> <repository> <clone_directory>
 
 # View all available remote for a git repository
 git remote --verbose
+
+# Stage single or multiple files
+cd <toplevel_directory>; \
+    git add <changed_files>;
+
+$ toplevel_directory: git rev-parse --show-toplevel
+$ unstaged_files: git status --untracked-files=no -s --porcelain | awk '{print $NF}' --- --multi true
