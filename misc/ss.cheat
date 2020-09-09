@@ -1,0 +1,13 @@
+% ss
+
+# lsof -i -P -n | grep ESTABLISHED
+ss -ntup 
+
+# lsof -i -P -n | grep LISTEN
+ss -ntupl  
+
+# lsof -i -P -n 
+ss -ntupa
+
+# To view routing table (use -n flag to disable DNS lookups):
+ss -r

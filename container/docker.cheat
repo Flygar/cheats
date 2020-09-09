@@ -1,5 +1,8 @@
 % docker
 
+# Docker CE for Linux installation script; curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+wget -qO- get.docker.com | bash
+
 # Create a tag TARGET_IMAGE[:TAG] that refers to SOURCE_IMAGE[:TAG]
 docker tag <SOURCE_IMAGE> <TARGET_IMAGE>
 

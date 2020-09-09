@@ -1,0 +1,10 @@
+% mac
+
+# netstat -ntup 
+sudo lsof -i -P -n | grep ESTABLISHED
+
+# netstat -ntupl  
+sudo lsof -i -P -n | grep LISTEN
+
+# netstat -ntupa
+sudo lsof -i -P -n 

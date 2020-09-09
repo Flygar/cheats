@@ -1,0 +1,23 @@
+% netstat
+
+;# WARNING ! netstat is deprecated
+;# Replace it by: ss
+
+;# -n: don't resolve names 
+;# -t: tcp 
+;# -u: udp 
+;# -p: display PID/Program name for sockets
+;# -l: display listening server sockets
+;# -a: display all sockets
+
+# lsof -i -P -n | grep ESTABLISHED
+netstat -ntup 
+
+# lsof -i -P -n | grep LISTEN
+netstat -ntupl  
+
+# lsof -i -P -n 
+netstat -ntupa
+
+# To view routing table (use -n flag to disable DNS lookups):
+netstat -r
