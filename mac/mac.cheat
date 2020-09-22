@@ -8,3 +8,9 @@ sudo lsof -i -P -n | grep LISTEN
 
 # netstat -ntupa
 sudo lsof -i -P -n 
+
+# print the machine hardware name
+uname -m
+
+# print the operating system name.
+uname -s

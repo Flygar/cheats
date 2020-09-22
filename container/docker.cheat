@@ -40,7 +40,7 @@ docker logs --tail 100 <container_id> | less
 docker logs -f --tail 100 <container_id>
 
 # show low-level information of container's logpath
-docker inspect --format='{{.LogPath}}' <container_id>
+docker inspect --format='{{ .LogPath }}' <container_id>
 
 # show low-level information of container's pid
 docker inspect --format '{{ .State.Pid }}'  <container_id>
@@ -54,8 +54,14 @@ docker network ls
 # Create new network with driver bridge
 docker network create -d bridge <network_name>
 
-# remove all unused networks
+# Remove all unused networks
 docker network prune 
+
+# List volumes
+docker volume ls
+
+# Remove all unused local volumes
+docker volume prune
 
 $ image_id: docker images --- --headers 1 --column 3
 $ container_id: docker ps --- --headers 1 --column 1

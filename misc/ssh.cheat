@@ -17,3 +17,6 @@ isql -p 1219 -h localhost
 
 # 动态转发实现科学上网，不用在 VPS 上搭建 shadowsocks 服务。上面的命令实际上在你本机创建了一个 socks 代理服务，所有发往2018端口的请求都将被转发到 SSH Server 上面。利用 Chrome 上的 SwitchyOmega 的插件配置socks5代理实现科学上网
 ssh -NTfg -D 2018 <SSH Server>
+
+# 配置免密登陆
+ssh-copy-id -i ~/.ssh/aliyunserver.key.pub root@192.168.182.112

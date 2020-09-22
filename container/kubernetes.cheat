@@ -1,0 +1,11 @@
+%kubernetes
+
+# 查看指定 namespace 下的 pod 日志
+kubectl logs --tail 200 -n <namespace> <podName>
+
+# json格式化指定 namespace 下的 pod 信息，输出 status 部分
+kubectl get pods -n <namespace> <podName> -o json | jq .status
+
+
+
+% 
