@@ -158,4 +158,16 @@ data:
 
 ```
 
+### NOTES.txt 文件
+安装说明添加到 chart，只需创建一个 templates/NOTES.txt 文件即可
+- 和一个模板一样处理，并且具有所有可用的普通模板函数和对象。
+```txt
+Thank you for installing {{ .Chart.Name }}.
 
+Your release is named {{ .Release.Name }}.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get {{ .Release.Name }}
+```
