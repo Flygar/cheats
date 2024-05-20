@@ -1,9 +1,10 @@
 # debian
 ## 查看ip
+`
 ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
+`
 
-
-# ngnix
+# ngnix 参考文档：https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-debian-11
 ## You can check with the systemd init system to make sure the service is running
 sudo apt update && sudo apt install nginx
 ## Adjusting the Firewall
@@ -22,3 +23,7 @@ sudo systemctl reload nginx
 sudo systemctl disable nginx
 # To re-enable the service to start up at boot
 sudo systemctl enable nginx
+
+
+#Setting Up Server Blocks (Optional)
+sudo mkdir -p /var/www/<your_domain>/html
